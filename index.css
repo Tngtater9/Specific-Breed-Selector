@@ -1,0 +1,11 @@
+*{
+    box-sizing: border-box;
+}
+
+.hidden{
+    display: none;
+}
+
+.num-of-dogs{
+    width: 250px;
+}
