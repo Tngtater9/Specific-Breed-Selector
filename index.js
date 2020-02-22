@@ -17,7 +17,6 @@ function getDogBreed() {
 }
 
 function displayResults(responseJson) {
-  console.log(responseJson);
   //replace the existing image with the new ones
     $('figure').html(`<img src="${responseJson.message}" class="results-img">`);
 
