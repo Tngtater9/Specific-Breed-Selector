@@ -2,7 +2,13 @@
 
 function getDogImages() {
   fetch(getDogBreed())
-    .then(response => response.json())
+    .then(response => {
+      if(response.ok){
+        return response.json();
+      } else {
+        throw new Error('Dog breed not found');
+      }
+    })
     .then(responseJson => 
       displayResults(responseJson))
     .catch(error => alert(error, 'Dog breed not found'));
