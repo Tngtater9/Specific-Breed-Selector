@@ -1,31 +1,26 @@
 'use strict';
 
 function getDogImages() {
-  fetch(getHowManyDogs())
+  fetch(getDogBreed())
     .then(response => response.json())
     .then(responseJson => 
       displayResults(responseJson))
-    .catch(error => alert('Something went wrong. Try again later.'));
+    .catch(error => alert(error, 'Dog breed not found'));
 }
 
-function getHowManyDogs() {
-  let howMany = $('.num-of-dogs').val();
-  if(howMany === ""){
-    howMany = 3;
+function getDogBreed() {
+  let breed = $('.user-breed').val();
+  if(breed === ""){
+    alert("Please enter dog breed");
   }
-  let howManyStr = String(howMany);
-  return 'https://dog.ceo/api/breeds/image/random/' + howManyStr;
+  return "https://dog.ceo/api/breed/" + breed +"/images/random";
 }
 
 function displayResults(responseJson) {
   console.log(responseJson);
   //replace the existing image with the new ones
-  $(responseJson.message).each(function() {
-    console.log(this);
-  });
-  $(responseJson.message).each(function() {
-    $('figure').prepend(`<img src="${this}" class="results-img">`)
-  });
+    $('figure').html(`<img src="${responseJson.message}" class="results-img">`);
+
   //display the results section
   $('.results').removeClass('hidden');
 }
