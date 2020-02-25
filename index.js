@@ -37,6 +37,7 @@ function displayResults(responseJson) {
 function watchForm() {
   $('form').submit(event => {
     event.preventDefault();
+    $('.unhappy').addClass('hidden');
     getDogImages();
   });
 }
