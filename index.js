@@ -11,7 +11,11 @@ function getDogImages() {
     })
     .then(responseJson => 
       displayResults(responseJson))
-    .catch(error => alert(error, 'Dog breed not found'));
+    .catch(error => {
+      alert(error, 'Dog breed not found');
+      $('.results').addClass('hidden');
+      $('.unhappy').removeClass('hidden');
+    });
 }
 
 function getDogBreed() {
